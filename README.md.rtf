@@ -1,0 +1,113 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2708
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Bold;\f1\froman\fcharset0 Times-Roman;\f2\fmodern\fcharset0 Courier;
+\f3\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue0;\red179\green179\blue179;
+}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c0\c0\c0\c84706;\cssrgb\c75294\c75294\c75294;
+}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid1\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid101\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid102\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\margl1440\margr1440\vieww28900\viewh15620\viewkind0
+\deftab720
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Goal vs Hole Reinforcement Learning Environment\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\fs36 \cf0 Overview\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 This project implements a custom OpenAI Gymnasium environment called "Goal vs Hole." The agent navigates a 4x4 grid where it aims to reach a designated goal while avoiding holes that lead to penalties. The agent uses a Q-learning algorithm to learn optimal actions over multiple episodes, and it generates GIFs to visualize its performance in each episode.\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 Installation\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 To run this project, ensure you have Python installed along with the following packages:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\f0\b \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 gymnasium
+\f1\b0 : For creating and managing the reinforcement learning environment.\
+\ls1\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 numpy
+\f1\b0 : For numerical operations.\
+\ls1\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	3	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 matplotlib
+\f1\b0 : For rendering the environment.\
+\ls1\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	4	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Pillow
+\f1\b0 : For image handling and GIF creation.\
+\ls1\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	5	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 configparser
+\f1\b0 : For reading configuration files.\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\fs26 \cf0 \
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 Configuration\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 The 
+\f2\fs26 env.ini
+\f1\fs24  file allows you to configure the environment settings:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 ini\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs22 \cf3 \cb4 \strokec3 Copy code
+\f2\fs26 \cf0 \cb1 \strokec2 \
+[environment]\
+holes = 1,2; 3,1; 2,3  # Define hole positions as x,y pairs separated by semicolons\
+goal = 3,2  # Define goal position as x,y pair\
+rewards = 100, -100  # Define rewards for goal and holes respectively\
+discount_factor = 0.9  # Discount factor for Q-learning\
+episodes = 1000  # Number of episodes for training the agent
+\f1\fs24 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \strokec2 \
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 Execution\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0
+\f1\b0\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Place the 
+\f2\fs26 env.ini
+\f1\fs24  file in the same directory as the code.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Run the main code in a Jupyter Notebook or any Python IDE. The main execution block in the code will:\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls2\ilvl1\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Read the configuration from 
+\f2\fs26 env.ini
+\f1\fs24 .\
+\ls2\ilvl1\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Create the environment.\
+\ls2\ilvl1\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Train the agent using Q-learning.\
+\ls2\ilvl1\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Execute the trained agent and generate GIFs for each episode.\
+\pard\tx720\tx1440\pardeftab720\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f0\b\fs28 \cf0 Running the Code
+\f2\b0\fs26 \
+\pard\pardeftab720\partightenfactor0
+\cf0 python goal_vs_hole_env.py\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 After execution, the GIF files for the agent\'92s navigation will be saved in the current working directory, and a message will indicate the total rewards for each episode.\
+\pard\pardeftab720\sa298\partightenfactor0
+\cf0 \
+}
